@@ -1,0 +1,18 @@
+# This is a basic workflow that is manually triggered
+
+name: set environment variables
+
+on:
+  workflow_dispatch
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set variable
+      run: echo "deploying_build=${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/next' }}" >> $GITHUB_ENV
+    - name: Use variable
+      run: echo $deploying_build
+    - name: conditional step using variable
+      if: $deploying_build
+      run: echo "condition met"
