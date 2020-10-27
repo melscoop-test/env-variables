@@ -16,3 +16,12 @@ jobs:
     - name: conditional step using variable
       if: ${{ env.deploying_build }}
       run: echo "condition met"
+    - name: conditional step using variable
+      if: ${{ false }}
+      run: echo "condition met"
+    - name: conditional step using variable
+      if: env.deploying_build
+      run: echo "condition met"
+    - name: conditional step using variable
+      if: false
+      run: echo "condition met"
